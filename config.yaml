@@ -11,11 +11,11 @@ params:
       The original webiste into the life of Beatriz. Enjoy.
     title: Hi, my name is Beatriz
   blog: {}
-  contact: "07883"
+  contact:
     address:
       - city: London  
         country: United Kingdom
-        street: Flat 55 Townshend Court, Allitsen Road
+        street: 
         title: Address
     buttonClear: Clear
     buttonSend: Send message
@@ -60,7 +60,7 @@ params:
   name: "Beatriz Narciso"
   navigation:
     button1:
-      - name: "Get Started""
+      - name: Get Started
         url: blogs
     button2:
       - name: Log In
