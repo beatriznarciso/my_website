@@ -1,6 +1,6 @@
-baseURL: http://example.org/
+baseURL: https://beatriznarciso.netlify.app/
 languageCode: en-us
-title: Forty
+title: Portfolio Website
 theme: forty
 googleAnalytics: ''
 disqusShortname: ''
@@ -8,15 +8,14 @@ params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
-      AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Forty
+      The original webiste into the life of Beatriz. Enjoy.
+    title: Hi, my name is Beatriz
   blog: {}
-  contact:
+  contact:07883034284
     address:
-      - city: City, ST 00000
-        country: Country
-        street: Street
+      - city: London  
+        country: United Kingdom
+        street: Flat 55 Townshend Court, Allitsen Road
         title: Address
     buttonClear: Clear
     buttonSend: Send message
