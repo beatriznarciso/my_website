@@ -57,10 +57,10 @@ params:
         label: LinkedIn
         url: https://www.linkedin.com
   image: ''
-  name: Your name
+  name: "Beatriz Narciso"
   navigation:
     button1:
-      - name: Get Started
+      - name: "Get Started""
         url: blogs
     button2:
       - name: Log In
