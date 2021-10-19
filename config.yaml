@@ -73,7 +73,7 @@ params:
     enable: yes
     showcase:
        image: pic01.jpg
-        subtitle: Ipsum Dolor Sit Amet
+        subtitle: Welcome to my home city
         title: Aliquam
         url: blogs/aliquam
       - image: pic02.jpg
