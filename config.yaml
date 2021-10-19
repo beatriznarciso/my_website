@@ -79,23 +79,16 @@ params:
       - image: seoul.jpg
         subtitle: How to make the most out of your exchange semester
         title: South Korea
-        url: blogs/my-exchange-semester
+        url: blogs/my-exchange-semestr
       - image: pic03.jpg
-        subtitle: Being a student in London
-        title: United Kingdom
-        url: blogs/living-in-london
+        subtitle: What is better than a movie and popcorns?
+        title: Movies
+        url: blogs/imdb
       - image: pic04.jpg
         subtitle: Get to know more about London Business School
         title: Student Amabassador
         url: blogs/LBS community
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
+     
       
   two:
     buttonText: Find out more
