@@ -72,9 +72,9 @@ params:
   tiles:
     enable: yes
     showcase:
-       image: pic01.jpg
+      - image: pic01.jpg
         subtitle: Welcome to my home city
-        title: Aliquam
+        title: London
         url: blogs/aliquam
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
