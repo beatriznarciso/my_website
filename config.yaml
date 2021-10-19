@@ -9,26 +9,26 @@ params:
     buttonText: Get Started
     subtitle: |-
       The original webiste into the life of Beatriz. Enjoy.
-    title: Hi, my name is Beatriz
+    title: Beatriz Narciso
   blog: {}
   contact:
     address:
       - city: London  
         country: United Kingdom
         street: 
-        title: Address
+        title: 
     buttonClear: Clear
     buttonSend: Send message
     email:
-      - email: example@domain.com
+      - email: mbeatriznarciso@gmail.com
         title: Email
     enable: yes
     phone:
-      - phone: (000) 000-0000 x1234
-        title: Phone
+      - phone: "+44 7883034284"
+        title: #
   custom_css: []
   custom_js: []
-  description: Your description
+  description: Hi, my name is Maria Beatriz but please feel free to call me Bia. I'm a current student at LBS, and this is my webiste!
   error404:
     heading: Page couldn't be found
     text: Please visit [this page](/)
@@ -49,13 +49,13 @@ params:
         url: https://www.facebook.com
       - icon: fa-instagram
         label: Instagram
-        url: https://www.instagram.com
+        url: https://www.instagram.com/mbeatriznarciso/
       - icon: fa-github
         label: GitHub
-        url: https://www.github.com
+        url: https://github.com/beatriznarciso
       - icon: fa-linkedin
         label: LinkedIn
-        url: https://www.linkedin.com
+        url: https://www.linkedin.com/in/mbeatriznarciso/
   image: ''
   name: "Beatriz Narciso"
   navigation:
