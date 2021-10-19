@@ -78,19 +78,19 @@ params:
         subtitle: Born and raised
         title: Lisbon
         url: blogs/Lisbon
-      - image: C:\Users\mbeat\OneDrive\Documentos\LBS\Data Analytics\project 20.09.2021\my_website\lisbon.jpg
+      - image: 
         subtitle: How to make the most out of a semester abroad
         title: Seoul
         url: blogs/tempus
-      - image: pic03.jpg
+      - image: 
         subtitle: Living in london as a student
         title: London
         url: blogs/magna
-      - image: pic04.jpg
+      - image: 
         subtitle: What is like to be a foodie
         title: Food
         url: blogs/ipsum
-      - image: pic05.jpg
+      - image: 
         subtitle: Get involved with LBS
         title: Student Amabssador
         url: blogs/ipsum
