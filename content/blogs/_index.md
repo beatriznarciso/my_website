@@ -5,5 +5,4 @@ image: pic02.jpg
 slug: Check out what I've been up too
 title: About me
 ---
-
-My blogs about technology and lifestyle.
+Here you can get a glimpse of what I've been up to since I was born in 1998. 
