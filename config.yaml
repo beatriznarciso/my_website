@@ -82,7 +82,7 @@ params:
       - image: 
         subtitle: Get to know more about London Business School
         title: Student Amabassador
-        url: blogs/LBS community
+        url: blogs/lbs-community
    two:
     buttonText: Find out more
     enable: yes
