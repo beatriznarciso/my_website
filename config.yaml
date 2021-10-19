@@ -6,7 +6,7 @@ googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
-    buttonText: Get Started
+    buttonText: Enjoy!
     subtitle: |-
       The original webiste into the life of Beatriz. 
     title: Beatriz Narciso
@@ -28,7 +28,7 @@ params:
         title: #
   custom_css: []
   custom_js: []
-  description: Hi, my name is Maria Beatriz but please feel free to call me Bia. I'm a current student at LBS, and this is my webiste!
+  description: 
   error404:
     heading: Page couldn't be found
     text: Please visit [this page](/)
@@ -60,7 +60,7 @@ params:
   name: "Beatriz Narciso"
   navigation:
     button1:
-      - name: Enjoy
+      - name: See more
         url: blogs
     button2:
       - name: Log In
@@ -86,32 +86,25 @@ params:
         url: blogs/Lisbon
       - image: lisbon.jpg
         subtitle: Feugiat Amet Tempus
-        title: Tempus
+        title: Seoul
         url: blogs/tempus
       - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
+        subtitle: Lorem
+        title: London
         url: blogs/magna
       - image: pic04.jpg
         subtitle: Nisl Sed Aliquam
-        title: Ipsum
+        title: Food
         url: blogs/ipsum
       - image: pic05.jpg
         subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
+        title: Student Amabssador
         url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
+      
   two:
-    buttonText: Get Started
+    buttonText: Find out more
     enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \r\n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \r\n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \r\n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\r\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
+    subtitle: My name is Maria Beatriz but please feel free to call me Bia. I'm a currently studying at LBS, doing the Masters in Financial Analysis.
+    I consider myself to be a very passionate and enthusiastic person who enjoys a good challenge."
+    title: Who am I?
     url: blogs
