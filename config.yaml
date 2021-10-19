@@ -8,7 +8,7 @@ params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      The original webiste into the life of Beatriz. Enjoy.
+      The original webiste into the life of Beatriz. 
     title: Beatriz Narciso
   blog: {}
   contact:
@@ -60,7 +60,7 @@ params:
   name: "Beatriz Narciso"
   navigation:
     button1:
-      - name: Get Started
+      - name: Enjoy
         url: blogs
     button2:
       - name: Log In
@@ -82,9 +82,9 @@ params:
     showcase:
       - image: pic01.jpg
         subtitle: Ipsum Dolor Sit Amet
-        title: Aliquam
-        url: blogs/aliquam
-      - image: pic02.jpg
+        title: Lisbon
+        url: blogs/Lisbon
+      - image: lisbon.jpg
         subtitle: Feugiat Amet Tempus
         title: Tempus
         url: blogs/tempus
