@@ -41,12 +41,6 @@ params:
         text: 'Design: '
         url: https://www.html5up.net
     social:
-      - icon: fa-twitter
-        label: Twitter
-        url: https://www.twitter.com
-      - icon: fa-facebook
-        label: Facebook
-        url: https://www.facebook.com
       - icon: fa-instagram
         label: Instagram
         url: https://www.instagram.com/mbeatriznarciso/
@@ -81,23 +75,23 @@ params:
     enable: yes
     showcase:
       - image: pic01.jpg
-        subtitle: Ipsum Dolor Sit Amet
+        subtitle: Born and raised
         title: Lisbon
         url: blogs/Lisbon
       - image: lisbon.jpg
-        subtitle: Feugiat Amet Tempus
+        subtitle: How to make the most out of a semester abroad
         title: Seoul
         url: blogs/tempus
       - image: pic03.jpg
-        subtitle: Lorem
+        subtitle: Living in london as a student
         title: London
         url: blogs/magna
       - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
+        subtitle: What is like to be a foodie
         title: Food
         url: blogs/ipsum
       - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
+        subtitle: Get involved with LBS
         title: Student Amabssador
         url: blogs/ipsum
       
