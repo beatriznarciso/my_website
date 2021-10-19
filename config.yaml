@@ -64,8 +64,6 @@ params:
         url: '#'
       - name: Blogs
         url: blogs
-      - name: Generic Blog
-        url: blogs/ipsum
       - name: Elements
         url: elements.html
     menu: Menu
@@ -74,25 +72,29 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: 
-        subtitle: Born and raised
-        title: Lisbon
-        url: blogs/Lisbon
-      - image: 
-        subtitle: How to make the most out of a semester abroad
-        title: Seoul
+       image: pic01.jpg
+        subtitle: Ipsum Dolor Sit Amet
+        title: Aliquam
+        url: blogs/aliquam
+      - image: pic02.jpg
+        subtitle: Feugiat Amet Tempus
+        title: Tempus
         url: blogs/tempus
-      - image: 
-        subtitle: Living in london as a student
-        title: London
+      - image: pic03.jpg
+        subtitle: Lorem Etiam Nullam
+        title: Magna
         url: blogs/magna
-      - image: 
-        subtitle: What is like to be a foodie
-        title: Food
+      - image: pic04.jpg
+        subtitle: Nisl Sed Aliquam
+        title: Ipsum
         url: blogs/ipsum
-      - image: 
-        subtitle: Get involved with LBS
-        title: Student Amabssador
+      - image: pic05.jpg
+        subtitle: Ipsum Dolor Sit Amet
+        title: Consequat
+        url: blogs/ipsum
+      - image: pic06.jpg
+        subtitle: Feugiat Amet Tempus
+        title: Etiam
         url: blogs/ipsum
       
   two:
