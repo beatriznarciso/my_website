@@ -74,10 +74,10 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: pic01.jpg
+      - image: 
         subtitle: Born and raised
         title: Lisbon
-        url: blogs/Lisbon
+        url: blogs/ipsum
       - image: 
         subtitle: How to make the most out of a semester abroad
         title: Seoul
