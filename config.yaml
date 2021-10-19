@@ -83,7 +83,7 @@ params:
       - image: pic03.jpg
         subtitle: What is better than a movie and popcorns?
         title: Movies
-        url: blogs/imdb
+        url: blogs/movies
       - image: pic04.jpg
         subtitle: Get to know more about London Business School
         title: Student Amabassador
