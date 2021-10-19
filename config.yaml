@@ -72,11 +72,11 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: pic01.jpg
+      - image: lisbon.jpg
         subtitle: Born and raised in Lisbon
         title: Portugal
         url: blogs/Lisbon
-      - image: lisbon.jpg
+      - image: seoul.jpg
         subtitle: How to make the most out of your exchange semester
         title: South Korea
         url: blogs/my-exchange-semester
