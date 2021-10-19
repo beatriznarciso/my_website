@@ -73,20 +73,20 @@ params:
     enable: yes
     showcase:
       - image: pic01.jpg
-        subtitle: Welcome to my home city
-        title: London
+        subtitle: Born and raised in Lisbon
+        title: Portugal
         url: blogs/aliquam
       - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Tempus
+        subtitle: How to make the most out of your exchange semester
+        title: South Korea
         url: blogs/tempus
       - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
+        subtitle: Being a student in London
+        title: United Kingdom
         url: blogs/magna
       - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
+        subtitle: Get to know more about London Business School
+        title: Student Amabassador
         url: blogs/ipsum
       - image: pic05.jpg
         subtitle: Ipsum Dolor Sit Amet
