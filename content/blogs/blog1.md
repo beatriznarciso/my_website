@@ -7,8 +7,7 @@ description: London Business School is an amazing university that provides stude
 draft: false
 image: pic10.jpg
 keywords: ""
-slug: Getting acquianted with the LBS community
+slug: Getting acquainted with the LBS community
 title: Student Ambassador
 ---
 
-Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.
