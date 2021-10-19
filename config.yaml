@@ -76,10 +76,10 @@ params:
         subtitle: Born and raised in Lisbon
         title: A bit about myself
         url: blogs/Lisbon
-      - image: seoul.jpg
-        subtitle: How to make the most out of your exchange semester
-        title: South Korea
-        url: blogs/my-exchange-semestr
+      - image: 
+        subtitle: Why should we care?
+        title: Global Warming
+        url: blogs/environment
       - image: pic03.jpg
         subtitle: What is better than a movie and popcorns?
         title: Movies

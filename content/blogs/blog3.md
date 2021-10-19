@@ -3,10 +3,294 @@ categories:
 - ""
 - ""
 date: "2017-10-31T22:26:13-05:00"
-description: On my last year at university I chose to do a semeste abroad in Seoul, South Korea. Seoul is an energetic city, full of life and places to explore. Even after five months there I sill left with a feeling that there was still so much to see. Even though it may seem like my time spent in Asia was short, I have rooted in me small details of the Korean culture. I have K-pop songs in all my playlists. I’m addicted to Korean noodles and I a strongly defend the theory that soy sauce goes well with every plate. I was able to visit the east, west, south and north of the country by making small trips during the weekends. Every city was different and special in its own way. The common thread around the country, was the generosity, sympathy and humility of the Korean people. Koreans have such a heartwarming culture that as soon as I landed, even though I was halfway across the world, I immediately felt at home.I have learned to be more gentle and helpful to those around me by living among them. The Koreans have a lot of pain and are still marked by their dark past. They are worried about the constant uncertain of their country’s future, but they still manage to be the most cheerful persons I met.
+description: Global Warming
 draft: false
 image: pic08.jpg
 keywords: ""
-slug: My exchange semester
-title: South Korea
+slug: environment
+title: Global Warming
 ---
+# Climate change and temperature anomalies 
+
+
+If we wanted to study climate change, we can find data on the *Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies* in the Northern Hemisphere at [NASA's Goddard Institute for Space Studies](https://data.giss.nasa.gov/gistemp). The [tabular data of temperature anomalies can be found here](https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.txt)
+
+To define temperature anomalies you need to have a reference, or base, period which NASA clearly states that it is the period between 1951-1980.
+
+Run the code below to load the file:
+
+```{r weather_data, cache=TRUE}
+
+weather <- 
+  read_csv("https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv", 
+           skip = 1, 
+           na = "***")
+
+```
+
+Notice that, when using this function, we added two options: `skip` and `na`.
+
+1. The `skip=1` option is there as the real data table only starts in Row 2, so we need to skip one row. 
+1. `na = "***"` option informs R how missing observations in the spreadsheet are coded. When looking at the spreadsheet, you can see that missing data is coded as "***". It is best to specify this here, as otherwise some of the data is not recognized as numeric data.
+
+Once the data is loaded, notice that there is a object titled `weather` in the `Environment` panel. If you cannot see the panel (usually on the top-right), go to `Tools` > `Global Options` > `Pane Layout` and tick the checkbox next to `Environment`. Click on the `weather` object, and the dataframe will pop up on a seperate tab. Inspect the dataframe.
+
+For each month and year, the dataframe shows the deviation of temperature from the normal (expected). Further the dataframe is in wide format. 
+
+You have two objectives in this section:
+
+1. Select the year and the twelve month variables from the `weather` dataset. We do not need the others (J-D, D-N, DJF, etc.) for this assignment. Hint: use `select()` function.
+
+1. Convert the dataframe from wide to 'long' format. Hint: use `gather()` or `pivot_longer()` function. Name the new dataframe as `tidyweather`, name the variable containing the name of the month as `month`, and the temperature deviation values as `delta`.
+
+
+```{r tidyweather}
+tidyweather <- weather %>% select(Year,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) %>% pivot_longer(cols=c(Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec),names_to="Month",values_to="delta")
+```
+
+Inspect your dataframe. It should have three variables now, one each for 
+
+1. year, 
+1. month, and 
+1. delta, or temperature deviation.
+
+## Plotting Information
+
+Let us plot the data using a time-series scatter plot, and add a trendline. To do that, we first need to create a new variable called `date` in order to ensure that the `delta` values are plot chronologically. 
+
+
+> In the following chunk of code, I used the `eval=FALSE` argument, which does not run a chunk of code; I did so that you can knit the document before tidying the data and creating a new dataframe `tidyweather`. When you actually want to run this code and knit your document, you must delete `eval=FALSE`, **not just here but in all chunks were `eval=FALSE` appears.**
+
+
+```{r scatter_plot, eval=FALSE}
+
+tidyweather <- tidyweather %>%
+  mutate(date = ymd(paste(as.character(Year), Month, "1")),
+         month = month(date, label=TRUE),
+         year = year(date))
+
+ggplot(tidyweather, aes(x=date, y = delta))+
+  geom_point()+
+  geom_smooth(color="red") +
+  theme_bw() +
+  labs (
+    title = "Weather Anomalies"
+  )
+
+```
+
+Is the effect of increasing temperature more pronounced in some months? Use `facet_wrap()` to produce a seperate scatter plot for each month, again with a smoothing line. Your chart should human-readable labels; that is, each month should be labeled "Jan", "Feb", "Mar" (full or abbreviated month names are fine), not `1`, `2`, `3`. 
+
+```{r facet_wrap, echo=FALSE}
+
+
+library(scales)
+
+ggplot(tidyweather, aes(x=date, y = delta))+
+  geom_point()+
+  geom_smooth(color="red") +
+  theme_bw() +
+  labs (
+    title = "Weather Anomalies"
+  ) +scale_x_date(date_labels = "%Y")+ facet_wrap(~Month)
+
+```
+
+
+It is sometimes useful to group data into different time periods to study historical data. For example, we often refer to decades such as 1970s, 1980s, 1990s etc. to refer to a period of time. NASA calcuialtes a temperature anomaly, as difference form the base periof of 1951-1980. The code below creates a new data frame called `comparison` that groups data in five time periods: 1881-1920, 1921-1950, 1951-1980, 1981-2010 and 2011-present. 
+
+We remove data before 1800 and before using `filter`. Then, we use the `mutate` function to create a new variable `interval` which contains information on which period each observation belongs to. We can assign the different periods using `case_when()`.
+
+
+```{r intervals, eval=FALSE}
+
+comparison <- tidyweather %>% 
+  filter(Year>= 1881) %>%     #remove years prior to 1881
+  #create new variable 'interval', and assign values based on criteria below:
+  mutate(interval = case_when(
+    Year %in% c(1881:1920) ~ "1881-1920",
+    Year %in% c(1921:1950) ~ "1921-1950",
+    Year %in% c(1951:1980) ~ "1951-1980",
+    Year %in% c(1981:2010) ~ "1981-2010",
+    TRUE ~ "2011-present"
+  ))
+
+```
+
+Inspect the `comparison` dataframe by clicking on it in the `Environment` pane.
+
+Now that we have the `interval` variable, we can create a density plot to study the distribution of monthly deviations (`delta`), grouped by the different time periods we are interested in. Set `fill` to `interval` to group and colour the data by different time periods.
+
+```{r density_plot, eval=FALSE}
+
+ggplot(comparison, aes(x=delta, fill=interval))+
+  geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
+  theme_bw() +                #theme
+  labs (
+    title = "Density Plot for Monthly Temperature Anomalies",
+    y     = "Density"         #changing y-axis label to sentence case
+  )
+
+```
+
+So far, we have been working with monthly anomalies. However, we might be interested in average annual anomalies. We can do this by using `group_by()` and `summarise()`, followed by a scatter plot to display the result. 
+
+```{r averaging, eval=FALSE}
+
+#creating yearly averages
+average_annual_anomaly <- tidyweather %>% 
+  group_by(Year) %>%   #grouping data by Year
+  
+  # creating summaries for mean delta 
+  # use `na.rm=TRUE` to eliminate NA (not available) values 
+  summarise(Year,annual_average_delta=mean(delta)) 
+
+#plotting the data:
+ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
+  geom_point()+
+  
+  #Fit the best fit line, using LOESS method
+  geom_smooth() +
+  
+  #change to theme_bw() to have white background + black frame around plot
+  theme_bw() +
+  labs (
+    title = "Average Yearly Anomaly",
+    y     = "Average Annual Delta"
+  )                         
+
+
+```
+
+
+## Confidence Interval for `delta`
+
+[NASA points out on their website](https://earthobservatory.nasa.gov/world-of-change/decadaltemp.php) that 
+
+> A one-degree global change is significant because it takes a vast amount of heat to warm all the oceans, atmosphere, and land by that much. In the past, a one- to two-degree drop was all it took to plunge the Earth into the Little Ice Age.
+
+Your task is to construct a confidence interval for the average annual delta since 2011, both using a formula and using a bootstrap simulation with the `infer` package. Recall that the dataframe `comparison` has already grouped temperature anomalies according to time intervals; we are only interested in what is happening  between 2011-present.
+
+```{r, calculate_CI_using_formula, eval=FALSE}
+comparison %>% filter(interval=="2011-present")
+
+
+formula_ci <- comparison %>% filter(interval=="2011-present") %>% summarise(mean_delta=mean(delta,na.rm=T),sd_delta=sd(delta,na.rm=T),count_delta=n(),t_critical=qt(0.975,count_delta-1),se_delta=sd(delta,na.rm=T)/sqrt(count_delta),error_margin=t_critical*se_delta,delta_low=mean_delta-error_margin,delta_high=mean_delta+error_margin)
+
+  # choose the interval 2011-present
+  # what dplyr verb will you use? 
+
+  # calculate summary statistics for temperature deviation (delta) 
+  # calculate mean, SD, count, SE, lower/upper 95% CI
+  # what dplyr verb will you use? 
+
+#print out formula_CI
+formula_ci
+```
+
+
+```{r, calculate_CI_using_bootstrap}
+library("infer")
+
+
+# use the infer package to construct a 95% CI for delta
+set.seed(1234)
+
+calculate_CI_using_bootstrap <- comparison %>% filter(interval=="2011-present") %>% specify(response=delta) %>% generate(reps=10000,type="bootstrap") %>% calculate(stat="mean")
+
+calculate_CI_using_bootstrap %>% get_confidence_interval(level=0.95,type="percentile")
+
+```
+
+> What is the data showing us? Please type your answer after (and outside!) this blockquote. You have to explain what you have done, and the interpretation of the result. One paragraph max, please!
+
+# Global warming and political views (GSS)
+
+[A 2010 Pew Research poll](https://www.pewresearch.org/2010/10/27/wide-partisan-divide-over-global-warming/) asked 1,306 Americans, "From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?"
+
+
+In this exercise we analyze whether there are any differences between the proportion of people who believe the earth is getting warmer and their political ideology. As usual, from the **survey sample data**, we will use the proportions to estimate values of *population parameters*. The file has 2253 observations on the following 2 variables:
+
+- `party_or_ideology`: a factor (categorical) variable with levels Conservative Republican, Liberal Democrat, Mod/Cons Democrat, Mod/Lib Republican
+- `response` : whether the respondent believes the earth is warming or not, or Don't know/ refuse to answer
+
+```{r, read_global_warming_pew_data}
+global_warming_pew <- read_csv(here::here("data", "global_warming_pew.csv"))
+```
+
+You will also notice that many responses should not be taken into consideration, like "No Answer", "Don't Know", "Not applicable", "Refused to Answer".
+
+
+```{r}
+global_warming_pew %>% 
+  count(party_or_ideology, response)
+
+unique(global_warming_pew[c("response")])
+```
+
+We will be constructing three 95% confidence intervals to estimate population parameters, for the % who believe that **Earth is warming**, accoridng to their party or ideology. You can create the CIs using the formulas by hand, or use `prop.test()`-- just rememebr to exclude the Dont know / refuse to answer!
+
+Does it appear that whether or not a respondent believes the earth is warming is independent of their party ideology? You may want to 
+
+You may want to read on [The challenging politics of climate change](https://www.brookings.edu/research/the-challenging-politics-of-climate-change/)
+
+```{r}
+
+
+#Conservative Republican
+ci_rep <- global_warming_pew %>% 
+  filter(party_or_ideology=="Conservative Republican",
+    response!="Don't know / refuse to answer")
+ci_rep$response<-ifelse(ci_rep$response=="Earth is warming",1,0)
+
+ci_rep %>% summarise(mean_res=mean(response),
+                     sd_res=sqrt(mean_res*(1-mean_res)),
+                     count_res=n(),t_critical2=qt(0.975,count_res-1),
+                     se_res=sd_res/sqrt(count_res),
+                     error_margin2=t_critical2*se_res,
+                     res_low=mean_res-error_margin2,
+                     res_high=mean_res+error_margin2)
+
+#Moderate / Liberal Republican 
+ci_mod_rep<- global_warming_pew %>% 
+  filter(party_or_ideology=="Mod/Lib Republican",
+    response!="Don't know / refuse to answer")
+ci_mod_rep$response<-ifelse(ci_mod_rep$response=="Earth is warming",1,0)
+
+ci_mod_rep %>% summarise(mean_res=mean(response),
+                         sd_res=sqrt(mean_res*(1-mean_res)),
+                         count_res=n(),t_critical2=qt(0.975,count_res-1),
+                     se_res=sd_res/sqrt(count_res),
+                     error_margin2=t_critical2*se_res,
+                     res_low=mean_res-error_margin2,
+                     res_high=mean_res+error_margin2)
+
+#Moderate / Conservative Democrat  
+ci_mod_dem<- global_warming_pew %>% 
+  filter(party_or_ideology=="Mod/Cons Democrat",
+    response!="Don't know / refuse to answer")
+ci_mod_dem$response<-ifelse(ci_mod_dem$response=="Earth is warming",1,0)
+
+ci_mod_dem %>% summarise(mean_res=mean(response),
+                         sd_res=sqrt(mean_res*(1-mean_res)),
+                         count_res=n(),t_critical2=qt(0.975,count_res-1),
+                     se_res=sd_res/sqrt(count_res),
+                     error_margin2=t_critical2*se_res,
+                     res_low=mean_res-error_margin2,
+                     res_high=mean_res+error_margin2)
+
+#Liberal Democrat  
+ci_dem<- global_warming_pew %>% 
+  filter(party_or_ideology=="Liberal Democrat",
+    response!="Don't know / refuse to answer")
+ci_dem$response<-ifelse(ci_dem$response=="Earth is warming",1,0)
+
+ci_dem %>% summarise(mean_res=mean(response),
+                         sd_res=sqrt(mean_res*(1-mean_res)),
+                         count_res=n(),t_critical2=qt(0.975,count_res-1),
+                     se_res=sd_res/sqrt(count_res),
+                     error_margin2=t_critical2*se_res,
+                     res_low=mean_res-error_margin2,
+                     res_high=mean_res+error_margin2)
+
+
