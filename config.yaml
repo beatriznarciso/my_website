@@ -79,11 +79,11 @@ params:
       - image: pic02.jpg
         subtitle: How to make the most out of your exchange semester
         title: South Korea
-        url: blogs/My exchange semester
+        url: blogs/my-exchange-semester
       - image: pic03.jpg
         subtitle: Being a student in London
         title: United Kingdom
-        url: blogs/Living in London
+        url: blogs/living-in-london
       - image: pic04.jpg
         subtitle: Get to know more about London Business School
         title: Student Amabassador
