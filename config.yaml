@@ -98,7 +98,6 @@ params:
   two:
     buttonText: Find out more
     enable: yes
-    subtitle: My name is Maria Beatriz but please feel free to call me Bia. I'm a currently studying at LBS, doing the Masters in Financial Analysis.
-    I consider myself to be a very passionate and enthusiastic person who enjoys a good challenge."
-    title:
+    subtitle: My name is Maria Beatriz but please feel free to call me Bia. I'm a currently studying at LBS, doing the Masters in Financial Analysis.I consider myself to be a very passionate and enthusiastic person who enjoys a good challenge."
+    title: Who am I
     url: blogs
