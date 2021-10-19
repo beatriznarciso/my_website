@@ -74,7 +74,7 @@ params:
     showcase:
       - image: lisbon.jpg
         subtitle: Born and raised in Lisbon
-        title: Portugal
+        title: A bit about myself
         url: blogs/Lisbon
       - image: seoul.jpg
         subtitle: How to make the most out of your exchange semester
