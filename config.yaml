@@ -56,23 +56,18 @@ params:
     button1:
       - name: See more
         url: blogs
-    button2:
-      - name: Log In
-        url: '#'
     links:
       - name: Home
         url: '#'
       - name: Blogs
         url: blogs
-      - name: Elements
-        url: elements.html
     menu: Menu
     subtitle: By HTML5 Up
     title: Forty
   tiles:
     enable: yes
     showcase:
-      - image: lisbon.jpg
+      - image: 
         subtitle: Born and raised in Lisbon
         title: A bit about myself
         url: blogs/Lisbon
@@ -80,11 +75,11 @@ params:
         subtitle: Why should we care?
         title: Global Warming
         url: blogs/environment
-      - image: pic03.jpg
+      - image: 
         subtitle: What is better than a movie and popcorns?
         title: Movies
         url: blogs/movies
-      - image: pic04.jpg
+      - image: 
         subtitle: Get to know more about London Business School
         title: Student Amabassador
         url: blogs/LBS community
