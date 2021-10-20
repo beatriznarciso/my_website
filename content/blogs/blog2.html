@@ -14,3 +14,91 @@ title: Movies
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
+<div id="imdb-ratings-differences-between-directors" class="section level1">
+<h1>IMDB ratings: Differences between directors</h1>
+<p>Recall the IMBD ratings data. I would like you to explore whether the mean IMDB rating for Steven Spielberg and Tim Burton are the same or not. I have already calculated the confidence intervals for the mean ratings of these two directors and as you can see they overlap.</p>
+<p><img src="C:/Users/mbeat/OneDrive/Documentos/LBS/Data%20Analytics/project%2020.09.2021/my_website/images/directors.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>First, I would like you to reproduce this graph. You may find <code>geom_errorbar()</code> and <code>geom_rect()</code> useful.</p>
+<p>In addition, you will run a hpothesis test. You should use both the <code>t.test</code> command and the <code>infer</code> package to simulate from a null distribution, where you assume zero difference between the two.</p>
+<blockquote>
+<p>Before anything, write down the null and alternative hypotheses, as well as the resulting test statistic and the associated t-stat or p-value. At the end of the day, what do you conclude?</p>
+</blockquote>
+<p>You can load the data and examine its structure</p>
+<pre class="r"><code>movies &lt;- read_csv(here::here(&quot;data&quot;, &quot;movies.csv&quot;))
+glimpse(movies)</code></pre>
+<pre><code>## Rows: 2,961
+## Columns: 11
+## $ title               &lt;chr&gt; &quot;Avatar&quot;, &quot;Titanic&quot;, &quot;Jurassic World&quot;, &quot;The Avenge~
+## $ genre               &lt;chr&gt; &quot;Action&quot;, &quot;Drama&quot;, &quot;Action&quot;, &quot;Action&quot;, &quot;Action&quot;, &quot;~
+## $ director            &lt;chr&gt; &quot;James Cameron&quot;, &quot;James Cameron&quot;, &quot;Colin Trevorrow~
+## $ year                &lt;dbl&gt; 2009, 1997, 2015, 2012, 2008, 1999, 1977, 2015, 20~
+## $ duration            &lt;dbl&gt; 178, 194, 124, 173, 152, 136, 125, 141, 164, 93, 1~
+## $ gross               &lt;dbl&gt; 7.61e+08, 6.59e+08, 6.52e+08, 6.23e+08, 5.33e+08, ~
+## $ budget              &lt;dbl&gt; 2.37e+08, 2.00e+08, 1.50e+08, 2.20e+08, 1.85e+08, ~
+## $ cast_facebook_likes &lt;dbl&gt; 4834, 45223, 8458, 87697, 57802, 37723, 13485, 920~
+## $ votes               &lt;dbl&gt; 886204, 793059, 418214, 995415, 1676169, 534658, 9~
+## $ reviews             &lt;dbl&gt; 3777, 2843, 1934, 2425, 5312, 3917, 1752, 1752, 35~
+## $ rating              &lt;dbl&gt; 7.9, 7.7, 7.0, 8.1, 9.0, 6.5, 8.7, 7.5, 8.5, 7.2, ~</code></pre>
+<p>Your R code and analysis should go here. If you want to insert a blank chunk of R code you can just hit <code>Ctrl/Cmd+Alt+I</code></p>
+<p>First, I would like you to reproduce this graph. You may find <code>geom_errorbar()</code> and <code>geom_rect()</code> useful:</p>
+<pre class="r"><code>S_directors &lt;- movies %&gt;%
+  select(director, rating) %&gt;%
+  filter(director == &quot;Steven Spielberg&quot; | director == &quot;Tim Burton&quot;) %&gt;%
+  group_by(director) %&gt;%
+  summarize(avg = mean(rating), 
+            sd = sd(rating), 
+            count = n(),
+            tstat = qt(0.975, count-1),
+            se = sd/sqrt(count),
+            lower_ci = avg - tstat*se, 
+            upper_ci = avg + tstat*se) 
+S_directors</code></pre>
+<pre><code>## # A tibble: 2 x 8
+##   director           avg    sd count tstat    se lower_ci upper_ci
+##   &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Steven Spielberg  7.57 0.695    23  2.07 0.145     7.27     7.87
+## 2 Tim Burton        6.93 0.749    16  2.13 0.187     6.53     7.33</code></pre>
+<pre class="r"><code>ggplot(S_directors, aes(x = avg,
+                        y = reorder(director, avg), 
+                        color = director)) +
+  
+  geom_errorbar(aes(xmin = lower_ci, 
+                    xmax = upper_ci), 
+                width = 0.1) +
+  
+  labs(title = &quot;Do Spielberg and Burton have the same IMDB Ratings&quot;,
+       subtitle = &quot;95% confidence intervals overlap&quot;,
+       x = &quot;Mean IMDB Rating&quot;,
+       y = &quot;&quot;) +
+  
+  geom_text(aes(label=round(lower_ci,2)), 
+            vjust=-1.5,
+            hjust=3,
+            angle=0, 
+            color=&quot;black&quot;, 
+            size=7) +
+  
+  geom_text(aes(label=round(upper_ci,2)), 
+            vjust=-1.5,
+            hjust=-2,
+            angle=0, 
+            color=&quot;black&quot;, 
+            size=7) +
+  
+  geom_text(aes(label=round(avg,2)), 
+            vjust=-1, 
+            colour= &quot;black&quot;, 
+            size= 11)+
+  
+  geom_point() +
+  theme_classic()+
+  theme(legend.position = &quot;none&quot;) +
+  annotate(&quot;rect&quot;, 
+           fill = &quot;grey&quot;, 
+           alpha = 0.5, 
+           xmin=7.27, 
+           xmax= 7.33, 
+           ymin=-Inf, 
+           ymax = Inf)</code></pre>
+<p><img src="/blogs/blog2_files/figure-html/unnamed-chunk-1-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
