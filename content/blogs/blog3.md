@@ -5,7 +5,7 @@ categories:
 date: "2017-10-31T22:26:13-05:00"
 description: Global Warming
 draft: false
-image: pic08.jpg
+image: earth.jpg
 keywords: ""
 slug: environment
 title: Global Warming
