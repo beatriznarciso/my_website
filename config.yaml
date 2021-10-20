@@ -62,8 +62,8 @@ params:
       - name: Blogs
         url: blogs
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    subtitle: By Beatiz Narciso
+    title: Home
   tiles:
     enable: yes
     showcase:
