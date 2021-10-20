@@ -67,19 +67,19 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: 
+      - image: #
         subtitle: Born and raised in Lisbon
         title: A bit about myself
         url: blogs/Lisbon
-      - image: 
+      - image: #
         subtitle: Why should we care?
         title: Pay Discrimination
         url: blogs/pay
-      - image: 
+      - image: #
         subtitle: What is better than a movie and popcorns?
         title: Movies
         url: blogs/movies
-      - image: 
+      - image: #
         subtitle: Get to know more about London Business School
         title: Student Amabassador
         url: blogs/lbs-community
