@@ -5,7 +5,7 @@ theme: forty
 googleAnalytics: ''
 disqusShortname: ''
 params:
-  banner:
+  banner: index.jpg
     buttonText: Enjoy!
     subtitle: |-
       The original webiste into the life of Beatriz. 
