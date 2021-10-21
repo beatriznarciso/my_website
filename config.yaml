@@ -8,7 +8,7 @@ params:
   banner:
     buttonText: Enjoy!
     subtitle: |-
-      The original webiste into the life of Beatriz. 
+      The original website into the life of Beatriz. 
     title: Beatriz Narciso
   blog: {}
   contact:
@@ -62,8 +62,8 @@ params:
       - name: Blogs
         url: blogs
     menu: Menu
-    subtitle: By Beatiz Narciso
-    title: Home
+    subtitle: To Homepage
+    title: Back
   tiles:
     enable: yes
     showcase:
